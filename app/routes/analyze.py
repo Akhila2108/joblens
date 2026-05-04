@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from app.services.analyzer import analyze_match, store_analysis
+from app.services.analyzer import analyze_match, store_analysis, semantic_search
 
 router = APIRouter()
 
@@ -77,3 +77,21 @@ async def get_recent_analyses():
         {"_id": 0, "resume_embedding": 0, "jd_embedding": 0}
     ).sort("_id", -1).limit(10))
     return {"analyses": analyses, "count": len(analyses)}
+
+
+@router.get("/search")
+async def search_similar_analyses(query: str, top_k: int = 5):
+    """
+    Semantic search across past analyses using vector similarity.
+    Example: /api/v1/search?query=Python backend engineer with AWS experience
+    """
+    if not query:
+        raise HTTPException(status_code=400, detail="Query parameter is required")
+    
+    results = semantic_search(query, top_k)
+    
+    return {
+        "query": query,
+        "results_count": len(results),
+        "results": results
+    }

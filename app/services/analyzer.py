@@ -85,3 +85,44 @@ def store_analysis(resume_text: str, job_description: str, analysis: dict) -> st
     
     result = analyses_collection.insert_one(document)
     return str(result.inserted_id)
+
+
+def semantic_search(query_text: str, top_k: int = 5) -> list:
+    """
+    Search past analyses semantically using vector similarity
+    Find analyses similar to the query text
+    """
+    from app.config import db
+    
+    # Convert query to embedding
+    query_embedding = embed_text(query_text)
+    
+    # MongoDB Atlas Vector Search pipeline
+    pipeline = [
+        {
+            "$vectorSearch": {
+                "index": "vector_index",
+                "path": "resume_embedding",
+                "queryVector": query_embedding,
+                "numCandidates": 50,
+                "limit": top_k
+            }
+        },
+        {
+            "$project": {
+                "resume_snippet": 1,
+                "jd_snippet": 1,
+                "match_score": 1,
+                "analysis": 1,
+                "score": {"$meta": "vectorSearchScore"}
+            }
+        }
+    ]
+    
+    results = list(db["analyses"].aggregate(pipeline))
+    
+    # Convert ObjectId to string
+    for r in results:
+        r["_id"] = str(r["_id"])
+    
+    return results
