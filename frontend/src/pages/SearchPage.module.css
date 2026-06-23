@@ -1,0 +1,167 @@
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.header {
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #1a1a1a;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.searchBar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.input {
+  flex: 1;
+  padding: 11px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #1a1a1a;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.input:focus {
+  border-color: #1D9E75;
+}
+
+.searchBtn {
+  background: #1D9E75;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.searchBtn:hover {
+  background: #178a63;
+}
+
+.searchBtn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.empty {
+  color: #6b7280;
+  font-size: 14px;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.resultItem {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px 20px;
+}
+
+.resultTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.resultLeft {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.scoreCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.snippets {
+  flex: 1;
+  min-width: 0;
+}
+
+.jdSnippet {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+.resumeSnippet {
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.similarityBadge {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 10px;
+  background: #E6F1FB;
+  color: #0C447C;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 4px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.skillBadge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #E1F5EE;
+  color: #085041;
+  font-weight: 500;
+}
