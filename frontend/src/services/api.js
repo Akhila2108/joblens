@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: '',
+  baseURL: import.meta.env.VITE_API_URL || 'https://joblens-j6mq.onrender.com',
   headers: {
     'Content-Type': 'application/json'
   }
