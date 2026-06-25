@@ -10,7 +10,7 @@ MONGODB_URI = os.getenv("MONGODB_URI")
 DATABASE_NAME = os.getenv("DATABASE_NAME")
 
 # MongoDB connection
-client = MongoClient(MONGODB_URI, tlsCAFile=certifi.where())
+client = MongoClient(MONGODB_URI, tls=True, tlsAllowInvalidCertificates=False)
 db = client[DATABASE_NAME]
 
 # Collections
